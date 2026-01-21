@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SILLY.JEWELS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  .filter-btn {
+    padding: 10px 18px;
+    border-radius: 9999px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+  .filter-btn.active {
+    background: #c7a14a;
+    color: #000;
+  }
+</style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+<!-- HEADER -->
+<header class="flex items-center justify-between px-6 py-4 border-b">
+  <div class="flex items-center gap-3">
+    <img src="images/logo.png" alt="SILLY.JEWELS" class="h-8">
+    <span class="text-sm text-gray-500">Luxury • Affordable • Unisex</span>
+  </div>
+</header>
+
+<!-- PRODUCTS SECTION -->
+<section class="container mx-auto px-5 py-14">
+
+  <div class="text-center mb-10">
+    <h1 class="text-3xl font-semibold">Our Collection</h1>
+  </div>
+
+  <!-- FILTER BUTTONS -->
+  <div class="flex flex-wrap justify-center gap-4 mb-10">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+    <button class="filter-btn" onclick="filterProducts('earring', this)">Earrings</button>
+    <button class="filter-btn" onclick="filterProducts('necklace', this)">Necklaces</button>
+    <button class="filter-btn" onclick="filterProducts('ring', this)">Rings</button>
+    <button class="filter-btn" onclick="filterProducts('bracelet', this)">Bracelets</button>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <div class="product earring bg-gray-100 p-6 rounded-xl">
+      <img src="ads/Untitled design (4).png" class="rounded mb-4">
+      <h2 class="font-medium">Gold Hoop Earrings
+      </h2>
+     304 Stainless Steel 18K gold plated
+    <br> Price 15$
+    </div>
+
+    <div class="product necklace bg-gray-100 p-6 rounded-xl">
+      <img src="turtle necklace.png" class="rounded mb-4">
+      <h2 class="font-medium">Bohemian Sea Turtle Necklace</h2>
+      18K gold-plated stainless steel
+Available in blue & green. Limited pieces.<br>Price 10$
+✨ Complimentary lip cream included
+    </div>
+
+    <div class="product ring bg-gray-100 p-6 rounded-xl">
+      <img src="https://dummyimage.com/500x350" class="rounded mb-4">
+      <h2 class="font-medium">Classic Ring</h2>
+    </div>
+
+    <div class="product bracelet bg-gray-100 p-6 rounded-xl">
+      <img src="https://dummyimage.com/500x350" class="rounded mb-4">
+      <h2 class="font-medium">Charm Bracelet</h2>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t py-6 text-center">
+  <div class="flex justify-center gap-6 mb-3">
+    <a href="contact.html" class="text-sm underline">Contact Us</a>
+    <a href="policy.html" class="text-sm underline">Policies</a>
+  </div>
+  <p class="text-xs text-gray-500">© 2025 SILLY.JEWELS</p>
+</footer>
+
+<script>
+function filterProducts(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.product').forEach(p => {
+    p.style.display = (category === 'all' || p.classList.contains(category)) ? 'block' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
