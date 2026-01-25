@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buy Now – Instagram Order</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    h2 {
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .buy {
+      background: #000;
+      color: #fff;
+    }
+
+    .copy {
+      background: #f2f2f2;
+      color: #000;
+    }
+
+    .summary {
+      margin-top: 15px;
+      font-size: 14px;
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Turtle Stainless Steel Earrings</h2>
+  <p class="price">CA$9.01</p>
+
+  <label>Color</label>
+  <select id="color">
+    <option value="Gold">Gold</option>
+    <option value="Silver">Silver</option>
+  </select>
+
+  <label>Quantity</label>
+  <input type="number" id="qty" value="1" min="1">
+
+  <button class="buy" onclick="orderNow()">
+    BUY NOW – MESSAGE ON INSTAGRAM
+  </button>
+
+  <button class="copy" onclick="copyOrder()">
+    COPY ORDER DETAILS
+  </button>
+
+  <div class="summary" id="summary"></div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const productName = params.get("name") || "Product";
+  const price = "CA$" + (params.get("price") || "0.00");
+
+  document.querySelector("h2").innerText = productName;
+  document.querySelector(".price").innerText = price;
+
+  const instagramUsername = "shopsillyjewels";
+
+  function getOrderText() {
+    const color = document.getElementById("color").value;
+    const qty = document.getElementById("qty").value;
+
+    return `Hi, I want to order:
+Product: ${productName}
+Color: ${color}
+Quantity: ${qty}
+Price: ${price}`;
+  }
+
+  function orderNow() {
+    const orderText = getOrderText();
+    navigator.clipboard.writeText(orderText);
+
+    window.open(`https://ig.me/m/${instagramUsername}`, "_blank");
+  }
+
+  function copyOrder() {
+    navigator.clipboard.writeText(getOrderText());
+    alert("Order details copied. Paste in Instagram.");
+  }
+</script>
+
+</body>
+</html>
